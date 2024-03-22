@@ -1,0 +1,76 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generate {
+  margin: 20px 40%;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+
+.email-values {
+  display: flex;
+  border-radius: 50px;
+}
+
+.email-values input {
+  flex: 1;
+  padding: 5px 2px;
+  border: none;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin: 10px 2px;
+  text-align: center;
+}
+
+.generated {
+  outline: none;
+}
+
+button {
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: whitesmoke;
+}
+button:hover {
+  border-color: #875235;
+  color: #875235;
+}
+
+.emailgen {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  padding: 15px;
+}
+
+input,
+label {
+  color: #875235;
+}
