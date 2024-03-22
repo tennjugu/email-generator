@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
@@ -20,6 +20,10 @@ function App() {
    }
    setEmail(emailName += '@' + emailProvider)
   }, [length, addNum, emailProvider])
+
+  useEffect(() => {
+    generateEmail()
+  }, [length, addNum,emailProvider])
 
 
   return (
