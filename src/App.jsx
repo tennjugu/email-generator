@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 
 function App() {
   const [length, setLength] = useState(9)
   const [addNum, setAddNum] = useState(false)
-  const [emailProvider, setEmailProvider] = useState('')
+  const [emailProvider, setEmailProvider] = useState('gmail.com')
   const [email, setEmail] = useState('')
 
   const generateEmail = useCallback(() => {
@@ -25,13 +25,18 @@ function App() {
     generateEmail()
   }, [length, addNum,emailProvider])
 
+  const emailRef = useRef(null)
+  const copyEmailToClipboard = () => {
+    window.navigator.clipboard.writeText(email)
+    emailRef.current?.select()
+  }
 
   return (
     <div className="emailgen">
       <h1>Email Generator</h1>
       <div className="email-values">
-        <input type="text" className="generated" value={email} readOnly />
-        <button>copy</button>
+        <input type="text" className="generated" value={email} readOnly ref={emailRef} />
+        <button onClick={copyEmailToClipboard}>copy</button>
       </div>
       <div className="parameters">
         <input type="range" value={length} min = {6} max = {20} onChange={(e) => setLength(e.target.value)}/>
@@ -40,7 +45,7 @@ function App() {
           setAddNum((prev) => !prev)
         }}/>
         <label htmlFor="checkbox" >numbers</label>
-        <input type="radio" name='email' id='gmail' value={'gmail.com'} onClick={(event) => setEmailProvider(event.target.value)} />
+        <input type="radio" name='email' id='gmail' value={'gmail.com'} defaultChecked onClick={(event) => setEmailProvider(event.target.value)} />
         <label htmlFor="gmail" >Gmail</label>
         <input type="radio" name='email' id='outlook' value={'outlook.com'} onClick={(event) => setEmailProvider(event.target.value)}/>
         <label htmlFor="outlook">Outlook</label>
