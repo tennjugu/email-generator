@@ -18,7 +18,7 @@ function App() {
    emailName += str.charAt(charIndex)
    emailName 
    }
-   setEmail(emailName += '@' + emailProvider)
+   setEmail(`${emailName}@${emailProvider}`)
   }, [length, addNum, emailProvider])
 
   useEffect(() => {
@@ -39,12 +39,10 @@ function App() {
         <button onClick={copyEmailToClipboard}>copy</button>
       </div>
       <div className="parameters">
-        <input type="range" value={length} min = {6} max = {20} onChange={(e) => setLength(e.target.value)}/>
-        <label htmlFor="length" >length:{length}</label>
-        <input type="checkbox" defaultChecked = {addNum} onChange={() => {
-          setAddNum((prev) => !prev)
-        }}/>
-        <label htmlFor="checkbox" >numbers</label>
+        <input type="range" value={length} min={6} max={20} id="emailLength" onChange={(e) => setLength(e.target.value)} />
+        <label htmlFor="emailLength">Length: {length}</label>
+        <input type="checkbox" defaultChecked={addNum} id="includeNumbers" onChange={() => { setAddNum((prev) => !prev); }} />
+        <label htmlFor="includeNumbers">Numbers</label>
         <input type="radio" name='email' id='gmail' value={'gmail.com'} defaultChecked onClick={(event) => setEmailProvider(event.target.value)} />
         <label htmlFor="gmail" >Gmail</label>
         <input type="radio" name='email' id='outlook' value={'outlook.com'} onClick={(event) => setEmailProvider(event.target.value)}/>
